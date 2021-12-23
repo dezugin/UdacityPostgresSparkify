@@ -4,6 +4,10 @@ import psycopg2
 import pandas as pd
 from sql_queries import *
 
+"""
+Method for processing song files in data/song_data and inserting some of their attributes into song and artist dimensional tables through sql queries in the postgresql sparkify database
+"""
+
 def process_song_file(cur, filepath):
     # open song file
     df = pd.read_json(filepath, lines=True)
@@ -17,6 +21,10 @@ def process_song_file(cur, filepath):
     cur.execute(artist_table_insert, artist_data)
 
 
+"""
+Method for processing log files in data/log_data, filtering them on the bases of the NextSong element in the category page, and inserting some of their attributes into time and user dimensional tables, as well as the songplay fact table through sql queries in the postgresql sparkify database
+"""
+    
 def process_log_file(cur, filepath):
     # open log file
     df = pd.read_json(filepath, lines=True)
@@ -58,6 +66,10 @@ def process_log_file(cur, filepath):
         songplay_data =  (row.ts, row.userId, row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
 
+        
+"""
+Method for acquiring all files in the directory and iterate through files and process them
+"""
 
 def process_data(cur, conn, filepath, func):
     # get all files matching extension from directory
