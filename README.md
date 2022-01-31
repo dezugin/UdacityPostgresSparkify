@@ -17,6 +17,9 @@ In this project, you'll apply what you've learned on data modeling with Postgres
 
 I implemented an ETL (Extract Transform Load) pipeline with the knowledge I learnt in the first lessons of the Udacity Course, used of a jupyter notebook to write code extracting JSON files and properly placing them in a postgres database, through SQL queries utilizing of a star schema. I then transferred the content of the jupyter notebook to a .py script.
 
+Star schema:
+![Star Schema](Song_ERD.png?raw=true "Star Schema")
+
 # Files in this project and what they actually do
 - etl.ipynb: Jupyter notebook used to implement the pipeline
 - etl.py: converted jupyter notebook into ETL pipeline python script
